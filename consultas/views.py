@@ -6,6 +6,7 @@ from django.views.generic import ListView, View, DeleteView
 from .models import Consulta
 from django.utils.text import slugify
 from django.core.urlresolvers import reverse_lazy
+from django.views.generic.edit import UpdateView
 
 
 
@@ -37,5 +38,9 @@ class NuevaConsulta(View):
 			return render(request, template_name, context)
 
 class ConDelete(DeleteView):
+	model = Consulta 
+	success_url = reverse_lazy('list')
+	
+class ConsultaUpdate(UpdateView):
 	model = Consulta 
 	success_url = reverse_lazy('list')
