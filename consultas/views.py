@@ -23,19 +23,20 @@ class NuevaConsulta(View):
 		}
 		return render(request, template_name, context)
 	
-	def patient(self, request):
+	def post(self, request):
 		form = NewConsultaForm(request.POST,request.FILES)
 		if form.is_valid():
-			nuevo_paciente = form.save(commit=False)
-			nuevo_paciente.slug = slugify(nuevo_paciente.nombre)
-			nuevo_paciente.save()
+			nuevo_consulta = form.save(commit=True)
+			nuevo_consulta.save()
 		else:
 			context = {
 			'form':form,
 			}
 			template_name = 'consultas/nuevoconsulta.html'
 			return render(request, template_name, context)
+			success_url = reverse_lazy('list')
+
 
 class ConDelete(DeleteView):
 	model = Consulta 
-	success_url = reverse_lazy('list')
+	success_url = reverse_lazy('home')
