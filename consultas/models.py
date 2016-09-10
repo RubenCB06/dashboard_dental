@@ -6,7 +6,7 @@ class Paciente(models.Model):
     	 ('mujer','Mujer'),
     ]
 	nombre = models.CharField(max_length=140)
-	appellidos = models.CharField(max_length=140)
+	apellidos = models.CharField(max_length=140)
 	edad = models.IntegerField()
 	sexo = models.CharField(max_length=140, choices=OPCIONES,default="Hombre")
 	telefono = models.IntegerField() 
@@ -14,7 +14,7 @@ class Paciente(models.Model):
 	
 
 	def __str__(self):
-		return '{} {}'.format(self.nombre,self.appellidos)
+		return '{} {}'.format(self.nombre,self.apellidos)
 
 
 class Medico(models.Model):
@@ -23,7 +23,7 @@ class Medico(models.Model):
     	 ('mujer','Mujer'),
     ]
 	nombre = models.CharField(max_length=140)
-	appellidos = models.CharField(max_length=140)
+	apellidos = models.CharField(max_length=140)
 	edad = models.IntegerField()
 	sexo = models.CharField(max_length=140, choices=OPCIONES,default="Hombre")
 	ESPECIALIAD = [
@@ -42,11 +42,17 @@ class Medico(models.Model):
 	telefono = models.IntegerField() 
 	correo = models.EmailField(max_length=100)
 	foto = models.ImageField(upload_to='fotomedico')
+
+	def __str__(self):
+		return '{} {}'.format(self.nombre,self.apellidos)
 	
 
 class Consulta(models.Model):
 	fecha = models.DateField(auto_now=False)
 	time = models.TimeField(auto_now=False)
 	paciente = models.ForeignKey(Paciente,related_name='paciente')
-	doctor = models.ForeignKey(Medico, on_delete=models.CASCADE, related_name='docotor')
+	doctor = models.ForeignKey(Medico, on_delete=models.CASCADE, related_name='doctor')
 	issue = models.TextField()
+
+	def __str__(self):
+		return 'El dia {} con doctor {} con el paciente {}'.format(self.nombre,self.apellidos,self.doctor)
