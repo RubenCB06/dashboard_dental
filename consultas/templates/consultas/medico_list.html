@@ -12,13 +12,13 @@
     </header>
 
     <!-- Page Content -->
-    <div class="container">
+    <div id="quienes_somos"  class="container">
 
         <hr>
 
         <div class="row">
             <div class="col-sm-8">
-                <h2>Que Hacemos</h2>
+                <h2>Quienes Somos</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et molestiae similique eligendi reiciendis sunt distinctio odit? Quia, neque, ipsa, adipisci quisquam ullam deserunt accusantium illo iste exercitationem nemo voluptates asperiores.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et molestiae similique eligendi reiciendis sunt distinctio odit? Quia, neque, ipsa, adipisci quisquam ullam deserunt accusantium illo iste exercitationem nemo voluptates asperiores.</p>
                 <p>
@@ -47,22 +47,13 @@
                 <h2>Medicos Especialistas</h2>
         </div>
         <div class="row">
-            <div class="col-sm-4">
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
-                <h2>Alejandra Velez Mendez</h2>
-                <p>Aqui pondriamos información sobre el especialista.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et molestiae similique eligendi reiciendis sunt distinctio.Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus</p>
+        {%for medico in object_list%}
+
+        <div class="col-sm-4">
+                <img class="img-circle img-responsive img-center" src="{{medico.foto.url}}" alt="">
+                <h2>{{medico.nombre}} {{medico.apellido_paterno}} {{medico.apellido_materno}}</h2>
+                <h3>{{medico.especialidad}}</h3>
+                <p>{{medico.descripcion}}</p>
             </div>
-            <div class="col-sm-4">
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
-                <h2>Alicia Martinez Rivera</h2>
-                <p>Las imagenes son responsivas. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-            </div>
-            <div class="col-sm-4">
-                <img class="img-circle img-responsive img-center" src="http://placehold.it/300x300" alt="">
-                <h2>Alma Clara Gonzalez Rivera</h2>
-                <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-            </div>
-        </div>
-        <!-- /.row -->
+        {%endfor%}
 {%endblock content%}

@@ -1,13 +1,13 @@
-from django.shortcuts import render
-from django.views.generic import ListView, View
-from .models import Consulta
-from django.utils.text import slugify
+#from django.shortcuts import render
+from django.views.generic import ListView
+from accounts.models import Medico
+#from django.utils.text import slugify
 #from django.utils.decorators import method_decorator
-from django.contrib.auth.decorators import login_required
+#from django.contrib.auth.decorators import login_required
 
 
 class HomeConsultas(ListView):
-	model = Consulta
+	model = Medico
 	queryset = model.objects.all().order_by('id')
 	template_name = 'consultas/medico_list.html'
 		

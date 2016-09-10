@@ -12,21 +12,22 @@ class Medico(models.Model):
 	edad = models.IntegerField()
 	sexo = models.CharField(max_length=140, choices=OPCIONES,default="Hombre")
 	ESPECIALIAD = [
-		('endodoncia', 'Endodoncia'), 
-		('odontopediatria','Odontopediatría'),
-		('ortodoncia', 'Ortodoncia'),
-		('periodoncia', 'Periodoncia'),
-		('Implantologia', 'Periodoncia'),
-		('prot-bucal','Prótesis Bucal'), 
-		('prot-maxilofacial','Prótesis Maxilofacial'),
-		('salud-publica','Salud Pública Bucal'),
-		('materiales-detales','Materiales Dentales'),
-		('patoliga-bucal','Patologia Bucal'),	
+		('Endodoncia', 'Endodoncia'), 
+		('Odontopediatría','Odontopediatría'),
+		('Ortodoncia', 'Ortodoncia'),
+		('Periodoncia', 'Periodoncia'),
+		('Implantología', 'Implantología'),
+		('Prótesis Bucal','Prótesis Bucal'), 
+		('Prótesis Maxilofacial','Prótesis Maxilofacial'),
+		('Salud Pública Bucal','Salud Pública Bucal'),
+		('Materiales Dentales','Materiales Dentales'),
+		('Patologia Bucal','Patologia Bucal'),	
     ]
 	email = models.CharField(max_length = 50, null=True, blank=True)
 	especialidad = models.CharField(max_length=140,choices=ESPECIALIAD,default="Ortodoncia")
 	telefono = models.IntegerField() 
 	foto = models.ImageField(upload_to='fotomedico')
+	descripcion = models.TextField(blank=True,null=True)
 	user = models.OneToOneField(User)
 
 	def __str__(self):
