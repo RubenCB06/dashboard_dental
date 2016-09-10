@@ -6,7 +6,7 @@ from django.utils.text import slugify
 from django.contrib.auth.decorators import login_required
 from .forms import NewPatientForm 
 
-class Home(ListView):
+class HomeConsultas(ListView):
 	model = Medico
 	queryset = model.objects.all().order_by('id')
 	template_name = 'consultas/medico_list.html'

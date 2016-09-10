@@ -8,9 +8,9 @@ from django.conf import settings
 from consultas import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^consulta/$',include(consultasUrls)),
-	url(r'^medico/$',include(medicoUrls)),
-	url(r'^paciente/$',include(pacienteUrls)),
+    url(r'^consulta/',include(consultasUrls)),
+	url(r'^medico/',include(medicoUrls)),
+	url(r'^paciente/',include(pacienteUrls)),
 	url(r'^nuevopaciente', views.NuevoPaciente.as_view(),),
     url(
     	regex=r'^media/(?P<path>.*)/$',
