@@ -1,13 +1,16 @@
 from django.db import models
-from paciente.models import Paciente
-from medico.models import Medico
+from accounts.models import Medico
 
 	
 
 class Consulta(models.Model):
 	fecha = models.DateField(auto_now=False)
 	time = models.TimeField(auto_now=False)
-	paciente = models.ForeignKey(Paciente,related_name='paciente')
+	nom_paciente = models.TextField()
+	apellido_paciente = models.TextField()
+	edad = models.IntegerField()
+	telefono = models.IntegerField()
+	correo = models.TextField()
 	doctor = models.ForeignKey(Medico, on_delete=models.CASCADE, related_name='doctor')
 	issue = models.TextField()
 

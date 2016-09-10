@@ -1,17 +1,17 @@
 from django.shortcuts import render
 from django.views.generic import ListView, View
-from .models import Paciente, Medico, Consulta
+from .models import Consulta
 from django.utils.text import slugify
 #from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-from .forms import NewPatientForm 
+
 
 class HomeConsultas(ListView):
-	model = Medico
+	model = Consulta
 	queryset = model.objects.all().order_by('id')
 	template_name = 'consultas/medico_list.html'
 		
-class NuevoPaciente(View):
+'''class NuevoPaciente(View):
 	#@method_decorator(login_required)
 	def get(self, request):
 		template_name = 'consultas/nuevopaciente.html'
@@ -33,3 +33,4 @@ class NuevoPaciente(View):
 			}
 			template_name = 'consultas/nuevopaciente.html'
 			return render(request, template_name, context)
+'''

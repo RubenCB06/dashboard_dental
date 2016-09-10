@@ -1,12 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Medico(models.Model):
 	OPCIONES = [
     	 ('hombre','Hombre'),
     	 ('mujer','Mujer'),
     ]
-	nombre = models.CharField(max_length=140)
-	apellidos = models.CharField(max_length=140)
 	edad = models.IntegerField()
 	sexo = models.CharField(max_length=140, choices=OPCIONES,default="Hombre")
 	ESPECIALIAD = [
@@ -23,8 +22,8 @@ class Medico(models.Model):
     ]
 	especialidad = models.CharField(max_length=140,choices=ESPECIALIAD,default="Ortodoncia")
 	telefono = models.IntegerField() 
-	correo = models.EmailField(max_length=100)
 	foto = models.ImageField(upload_to='fotomedico')
+	user = models.OneToOneField(User)
 
 	def __str__(self):
 		return '{} {}'.format(self.nombre,self.apellidos)
