@@ -6,13 +6,14 @@ from accounts.models import Medico
 class Consulta(models.Model):
 	fecha = models.DateField(auto_now=False)
 	time = models.TimeField(auto_now=False)
-	nom_paciente = models.TextField()
-	apellido_paciente = models.TextField()
+	nom_paciente = models.CharField(max_length = 50, null=True, blank=True)
+	apellido_paterno = models.CharField(max_length = 50, null=True, blank=True)
+	apellido_materno = models.CharField(max_length = 50, null=True, blank=True)
 	edad = models.IntegerField()
-	telefono = models.IntegerField()
-	correo = models.TextField()
+	telefono = models.IntegerField(null=False, blank=False)
+	correo = models.CharField(max_length = 50, null=False, blank=False)
 	doctor = models.ForeignKey(Medico, on_delete=models.CASCADE, related_name='doctor')
 	issue = models.TextField()
 
 	def __str__(self):
-		return 'El dia {} con doctor {} con el paciente {}'.format(self.nombre,self.apellidos,self.doctor)
+		return 'El dia {} con doctor {} con el paciente {} {}'.format(self.fecha,self.doctor,self.nom_paciente, self.apellido_paterno)
