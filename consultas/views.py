@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.views.generic import ListView, View
+from django.views.generic import ListView, View, DeleteView
 from .models import Consulta
 from django.utils.text import slugify
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from .forms import NewRecipeForm
+from django.core.urlresolvers import reverse_lazy
 
 
 class HomeConsultas(ListView):
@@ -33,3 +34,7 @@ class NuevaReceta(View):
 			}
 			template_name = 'consultas/nuevoconsulta.html'
 			return render(request, template_name, context)
+
+class ConDelete(DeleteView):
+	model = Consulta 
+	success_url = reverse_lazy('list')
