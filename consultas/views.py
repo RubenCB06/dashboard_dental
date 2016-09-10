@@ -4,6 +4,7 @@ from .models import Consulta
 from django.utils.text import slugify
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
+from .forms import NewRecipeForm
 
 
 class HomeConsultas(ListView):

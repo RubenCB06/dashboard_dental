@@ -30,4 +30,4 @@ class Medico(models.Model):
 	user = models.OneToOneField(User)
 
 	def __str__(self):
-		return '{} {}'.format(self.nombre, self.apellido_paterno)
+		return '{} {} - {}'.format(self.nombre, self.apellido_paterno, self.especialidad)

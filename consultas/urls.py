@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
 	url(r'^$', views.HomeConsultas.as_view(), name="list"),
+	url(r'^nreceta/$', views.NuevaReceta.as_view(), name="newReceta"),
 	
 ]
