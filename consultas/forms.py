@@ -10,3 +10,16 @@ class NewConsultaForm(forms.ModelForm):
                   'apellido_paterno' : 'Apellido Paterno' , 'apellido_materno' : 'Apellido Materno',
                   'edad' : 'Edad' , 'telefono' : 'Teléfono' , 'correo' : 'Correo', 
                   'doctor' : 'Doctor' , 'issue' : "Descripción" }
+        widgets = {
+			'fecha' : forms.TextInput(attrs={'class':'form-control'}),
+			'time' : forms.TextInput(attrs={'class':'form-control'}),
+			'nom_paciente' : forms.Select(attrs={'class':'form-control'}),
+			'apellido_paterno' : forms.TextInput(attrs={'class':'form-control'}),
+			'apellido_materno' : forms.TextInput(attrs={'class':'form-control'}) ,
+			'edad' : forms.TextInput(attrs={'class':'form-control'}) , 
+			'telefono':forms.TextInput(attrs={'class':'form-control'}) ,
+			'correo':forms.TextInput(attrs={'class':'form-control'}) ,
+			'doctor':forms.Select(attrs={'class':'form-control'}),
+			'issue' :forms.Textarea(attrs={'class':'form-control'}),
+
+		}

@@ -3,9 +3,13 @@
 {%block content%}
 
 <form action="." method="post" enctype="multipart/form-data">
-	{%csrf_token%}
-	{{form.as_p}}
-	<input type="submit" value="Aceptar">
-</form>
+ 
+ {% for field in form %}
+ <div class="form-group"> 
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+</div>
+{% endfor %}
+
 
 {%endblock content%}

@@ -3,7 +3,7 @@ from . import views
 
 
 urlpatterns = [
-	url(r'^$', views.HomeMedicos.as_view(), name="list"),
-	url(r'^nueva/$', views.NuevaConsulta.as_view(), name="newconsulta"),
-	url(r'^borrar/(?P<pk>\d+)/$', views.ConDelete.as_view(), name="delete"),
+	url(r'^$', views.HomeMedicos.as_view(), name="home"),
+	url(r'^nuevaconsulta/$', views.NuevaConsulta.as_view(), name="newconsulta"),
+	url(r'^borrarconsulta/(?P<pk>\d+)/$', views.ConDelete.as_view(), name="delete"),
 ]
