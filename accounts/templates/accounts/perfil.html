@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+{%for consulta in consultas%}
+<h1>{{consulta.fecha}}</h1>
+{%endfor%}
+
+{%endblock content%}

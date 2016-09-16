@@ -9,7 +9,7 @@ from django.conf import settings
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^',include(consultasUrls)),
-	url(r'^medico/',include(cuentasUrls)),
+	url(r'^',include(cuentasUrls)),
 
     url(
     	regex=r'^media/(?P<path>.*)/$',

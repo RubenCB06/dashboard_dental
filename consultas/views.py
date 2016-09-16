@@ -1,10 +1,9 @@
 
 from accounts.models import Medico
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import NewConsultaForm
 from django.views.generic import ListView, View, DeleteView
 from .models import Consulta
-from django.utils.text import slugify
 from django.core.urlresolvers import reverse_lazy
 
 
@@ -23,12 +22,12 @@ class NuevaConsulta(View):
 		}
 		return render(request, template_name, context)
 	
-	def patient(self, request):
+	def post(self, request):
 		form = NewConsultaForm(request.POST,request.FILES)
 		if form.is_valid():
-			nuevo_paciente = form.save(commit=False)
-			nuevo_paciente.slug = slugify(nuevo_paciente.nombre)
-			nuevo_paciente.save()
+			nuevo_consulta = form.save(commit=False)
+			nuevo_consulta.save()
+			return redirect ('home')
 		else:
 			context = {
 			'form':form,

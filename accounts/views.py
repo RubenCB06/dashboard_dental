@@ -4,12 +4,17 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from .forms import RegistrationForm
 from .models import Medico
+from consultas.models import Consulta
 
 class PerfilView(View):
 	@method_decorator(login_required)
 	def get(self, request):
 		template_name = 'accounts/perfil.html'
-		context = {}
+		medico = Medico.objects.filter(nombre=request.user.first_name)
+		consultas = Consulta.objects.filter(doctor=medico)
+		context = {
+		'consultas':consultas,
+		}
 		return render(request, template_name, context)
 
 class Alta(View):

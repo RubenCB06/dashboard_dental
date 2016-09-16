@@ -2,14 +2,41 @@
 
 {%block content%}
 
-<form action="." method="post" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" action="." method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+	<!--<div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    {{form.fecha}}
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+	</div> -->
  
  {% for field in form %}
  <div class="form-group"> 
-        {{ field.errors }}
-        {{ field.label_tag }} {{ field }}
+ 	<div class="col-xs-4">
+     {{ field.errors }}
+     {{ field }}
+    </div>
 </div>
 {% endfor %}
-
+<button type="submit" class="btn btn-primary">Solcitar Consulta</button>
+</form>
 
 {%endblock content%}
+	    
+ {% block extrajs %}
+ 	<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+    </script>
+ {% endblock %}

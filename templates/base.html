@@ -43,9 +43,18 @@
                     <li>
                         <a href="{%url 'newconsulta'%}">Solicitar consulta</a>
                     </li>
-                    <li>
-                        <a href="{%url 'login'%}">Ingresar</a>
+                    {%if request.user.is_authenticated%}
+                    <li>                
+                        <a href="{%url 'perfil'%}">Tu perfil</a>
                     </li>
+                    <li>
+                        <a href="{%url 'logout'%}">Cerrar Sesión</a>
+                    </li>
+                    {%else%}
+                        <li>
+                        <a href="{%url 'login'%}">Ingresar</a>
+                        </li>
+                    {%endif%}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
