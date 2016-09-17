@@ -44,4 +44,6 @@ class ConDelete(DeleteView):
 	
 class ConsultaUpdate(UpdateView):
 	model = Consulta 
-	success_url = reverse_lazy('list')
+	success_url = reverse_lazy('home')
+	fields = ['fecha', 'time', 'nom_paciente', 'edad', 'telefono', 'correo', 'issue']
+

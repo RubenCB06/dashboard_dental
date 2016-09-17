@@ -1,9 +1,45 @@
 {% extends 'base.html' %}
 
 {%block content%}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    align="center"
+}
 
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+
+<h1 align="center">CONSULTAS</h1>
 {%for consulta in consultas%}
-<h1>{{consulta.fecha}}</h1>
+<table>
+    <tr>
+        <th>Paciente</th>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>{{consulta.nom_paciente}}</td>
+        <td>{{consulta.fecha}}</td>
+        <td>{{consulta.time}}</td>
+        <td><a href="{%url 'update' consulta.id%}">Editar</a></td>
+        <td><a href="{%url 'update' consulta.id%}">Eliminar</a></td>
+    </tr>
+</table>
+
+
 {%endfor%}
 
 {%endblock content%}
