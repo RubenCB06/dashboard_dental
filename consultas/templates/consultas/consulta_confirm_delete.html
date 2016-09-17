@@ -1,13 +1,14 @@
 {%extends 'base.html'%}
-
 {%block content%}
 
 <form method="post">
 	{%csrf_token%}
-	<h2>¿Estas seguro que deseas borrar la consulta del paciente {{object.nom_paciente}} el dia
-			{{object.fecha}} a las {{object.time}}?</h2>
-	<input type="submit" value="Si, Seguro">
+	<div class="row">
+	<div class="col-md-6 col-md-offset-3"><h2>¿Estas seguro que deseas borrar la consulta del paciente {{object.nom_paciente}} el dia
+			{{object.fecha}} a las {{object.time}}?</h2></div></div>
+	<center><input type="submit" class="btn btn-warning" value="Si, Seguro"></center>
 
 </form>
-	<a class="btn orange" href="{%url 'home'%}">Cancelar</a>
+	<br><center><a href="{%url 'home'%}"><button type="button" class="btn btn-danger">Cancelar</button></a></center>
+
 {%endblock content%}
