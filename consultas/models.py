@@ -14,4 +14,4 @@ class Consulta(models.Model):
 	issue = models.TextField()
 
 	def __str__(self):
-		return 'El dia {} con doctor {} con el paciente {}'.format(self.fecha,self.doctor,self.nom_paciente)
+		return 'Dia {} con doctor {} con el paciente {}'.format(self.fecha,self.doctor,self.nom_paciente)
